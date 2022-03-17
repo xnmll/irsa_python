@@ -1,7 +1,6 @@
 """
 IRSA implementation.
 """
-__author__ = "Mikhail Vilgelm"
 __email__ = "mikhail.vilgelm@tum.de"
 
 import json
@@ -16,7 +15,7 @@ from tqdm import trange
 
 def mean_confidence_interval(data, confidence=0.95):
     """
-    Compute confidence interval on data
+    Compute confidence interval on data 计算置信区间
     :param data:
     :param confidence:
     :return:
@@ -44,15 +43,16 @@ class BaseStation:
     """
     Base station, implementing virtual assignment of resources (random selection),
     and decoding (so far ideal decoding only implemented)
+    基站，实现资源的虚拟分配(随机选择)，和解码(到目前为止只实现了理想的解码)
     """
 
     def __init__(self, degree_distr, num_resources, max_iter, enable_ideal_decoding=True):
         """
 
-        :param degree_distr: degree distrbution to use for ues
-        :param num_resources: number of resources (slots per frame)
-        :param max_iter: maximum number of decoding iterations
-        :param enable_ideal_decoding: if False, decoding is done in a realistic way
+        :param degree_distr: degree distrbution to use for ues                      用户区分度
+        :param num_resources: number of resources (slots per frame)                 每帧插槽数
+        :param max_iter: maximum number of decoding iterations                      最大迭代次数
+        :param enable_ideal_decoding: if False, decoding is done in a realistic way 如果为False，解码将以现实的方式完成
         """
         self.degree_distr = degree_distr
         self.num_resources = num_resources
@@ -63,9 +63,9 @@ class BaseStation:
 
     def assign_resources(self, ues):
         """
-        (Virtual) allocation of resources to UEs.
-        :param ues: pool of active UEs
-        :return: resources with ues allocated to them
+        (Virtual) allocation of resources to UEs.         资源分配到终端
+        :param ues: pool of active UEs                    活跃终端用户
+        :return: resources with ues allocated to them     分配给他们的资源
         """
 
         # create resources
